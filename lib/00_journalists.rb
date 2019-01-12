@@ -60,7 +60,11 @@ def how_many_underscore
     puts nb
  end
 
+ def sort_tab
+    puts $journalists.sort!
+ end
 # count_journalist
 # how_many_aude
 # first_char_is_upper
-how_many_underscore
+# how_many_underscore
+sort_tab
