@@ -17,7 +17,7 @@ def how_many_numbers()
 end
 
 def how_many_aude
-    regx = /aude/i
+    regx = /aude/
     nb = 0
     $journalists.each do |journalists|
         if journalists =~ regx
@@ -36,6 +36,17 @@ def first_char_is_upper()
         end
     end
     puts nb
+end
+
+def how_many_have_maj
+   regx = /[A-Z]/
+   nb = 0
+   $journalists.each do |journalists|
+        if journalists =~ regx
+            nb += 1
+        end
+   end
+   puts nb
 end
 
 # count_journalist
