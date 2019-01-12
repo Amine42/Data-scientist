@@ -49,6 +49,18 @@ def how_many_have_maj
    puts nb
 end
 
+def how_many_underscore
+    regx = /_/
+    nb = 0
+    $journalists.each do |journalists|
+         if journalists.match(regx)
+            nb += journalists.scan(regx).size
+         end
+    end
+    puts nb
+ end
+
 # count_journalist
 # how_many_aude
 # first_char_is_upper
+how_many_underscore
