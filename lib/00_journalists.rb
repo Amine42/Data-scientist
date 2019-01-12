@@ -58,13 +58,19 @@ def how_many_underscore
          end
     end
     puts nb
- end
+end
 
- def sort_tab
+def sort_tab
     puts $journalists.sort!
- end
+end
+
+def sort_tab_length
+    tab = $journalists.sort_by(&:length)
+    tab[0..50].each {|journalists| puts journalists}
+end
 # count_journalist
 # how_many_aude
 # first_char_is_upper
 # how_many_underscore
-sort_tab
+# sort_tab
+sort_tab_length
