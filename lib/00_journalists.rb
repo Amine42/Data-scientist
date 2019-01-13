@@ -2,7 +2,7 @@ $journalists = ["@jcunniet","@PaulLampon","@Aziliz31","@ssoumier","@marionsouzea
 
 # journalists.each {|i| puts i}
 def count_journalist
-  puts $journalists.count
+  puts "Il y a #{$journalists.count} journalists dans ce tableau"
 end
 
 def how_many_numbers
@@ -11,7 +11,7 @@ def how_many_numbers
   $journalists.each do |journalists|
     nb += 1 if journalists =~ regx
   end
-  puts nb
+  puts "Il y a #{nb} pseudo qui contiennent un numero"
 end
 
 def how_many_aude
@@ -20,7 +20,7 @@ def how_many_aude
   $journalists.each do |journalists|
     nb += 1 if journalists =~ regx
   end
-  puts nb
+  puts "Il y a #{nb} pseudo qui contiennent les lettres \"aude\" a la suite"
 end
 
 def first_char_is_upper
@@ -29,7 +29,7 @@ def first_char_is_upper
   $journalists.each do |journalists|
     nb += 1 if journalists =~ regx
   end
-  puts nb
+  puts "Il y a #{nb} pseudo qui commencent par une majuscule"
 end
 
 def how_many_have_maj
@@ -38,7 +38,7 @@ def how_many_have_maj
   $journalists.each do |journalists|
     nb += 1 if journalists =~ regx
   end
-  puts nb
+  puts "Il y a #{nb} pseudo qui contiennent une majuscule"
 end
 
 def how_many_underscore
@@ -47,7 +47,7 @@ def how_many_underscore
   $journalists.each do |journalists|
     nb += journalists.scan(regx).size if journalists.match(regx)
   end
-  puts nb
+  puts "Il y a #{nb} pseudo qui contiennent un underscore"
 end
 
 def sort_tab
@@ -60,12 +60,19 @@ def sort_tab_length
 end
 
 def epenser_index
-  puts $journalists.find_index('@epenser')
+  puts "La position dans le tableau d'epenser est a l'index #{$journalists.find_index('@epenser')}"
 end
-count_journalist
-# how_many_aude
-# first_char_is_upper
-# how_many_underscore
-# sort_tab
-# sort_tab_length
-# epenser_index
+
+def perform
+  count_journalist
+  how_many_numbers
+  how_many_aude
+  first_char_is_upper
+  how_many_have_maj
+  how_many_underscore
+  sort_tab
+  sort_tab_length
+  epenser_index
+end
+
+perform
