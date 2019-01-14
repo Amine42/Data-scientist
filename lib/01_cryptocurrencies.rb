@@ -5,12 +5,23 @@ def merge_tab_in_hash(array_key, array_value)
 end
 
 def hash_with_integer(hash)
-  hash = hash.key(hash.values.delete "$")
-  puts hash
+  new_hash = {}
+  hash.each { |k, v| new_hash[k] = v.tr('$', '').to_f }
+  new_hash
 end
 
-def most_value(hash_crypto)
-  puts hash_crypto.key(hash_crypto.values.to.max)
+def max_value(hash_crypto)
+  hash_crypto.key(hash_crypto.values.max)
+end
+
+def min_value(hash_crypto)
+  hash_crypto.key(hash_crypto.values.min)
+end
+
+def print_min_value(hash_crypto, value)
+  value = hash_crypto[value]
+  puts hash_crypto["EmberCoin"]
+  hash_crypto.each { |k, v| puts k if v == value }
 end
 
 def perform
@@ -23,9 +34,11 @@ def perform
     "$0.042993", "$0.000325", "$0.000271", "$0.002799", "$0.071591", "$1.17", "$0.001171", "$0.000651", "$0.000195", "$0.001562", "$0.008721", "$0.000065", "$0.000130", "$0.002473", "$0.000065", "$0.000325", "$0.656235", "$0.000254", "$0.000518", "$0.000065", "$0.054733", "$9.85", "$0.000520", "$0.000259", "$0.003288", "$0.006578", "$0.004273", "$0.024932", "$0.011394"]
  
   crypto = merge_tab_in_hash(key, value)
+  crypto_with_interger = hash_with_integer(crypto)
   hash_with_integer(crypto)
-  # most_value(crypto)
-  # puts crypto["BT2 [CST]"]
+  puts max_value(crypto_with_interger)
+  # puts Float(crypto_with_interger["EmberCoin"].to_s)
+  print_min_value(crypto_with_interger, min_value(crypto_with_interger))
 end
 
 perform
