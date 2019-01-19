@@ -12,8 +12,12 @@ def hash_with_integer(hash)
   new_hash
 end
 
-def most_value(hash_crypto)
+def max_value(hash_crypto)
   hash_crypto.key(hash_crypto.values.max)
+end
+
+def min_value(hash_crypto)
+  hash_crypto.key(hash_crypto.values.min)
 end
 
 def perform
@@ -26,7 +30,8 @@ def perform
     "$0.042993", "$0.000325", "$0.000271", "$0.002799", "$0.071591", "$1.17", "$0.001171", "$0.000651", "$0.000195", "$0.001562", "$0.008721", "$0.000065", "$0.000130", "$0.002473", "$0.000065", "$0.000325", "$0.656235", "$0.000254", "$0.000518", "$0.000065", "$0.054733", "$9.85", "$0.000520", "$0.000259", "$0.003288", "$0.006578", "$0.004273", "$0.024932", "$0.011394"]
     
   crypto = hash_with_integer(merge_tab_in_hash(key, value))
-  puts "la crypto qui a la plus grosse valeur est #{most_value(crypto)}"
+  puts "la crypto qui a la plus grosse valeur est #{max_value(crypto)}"
+  puts "la crypto qui a la plus petite valeur est #{min_value(crypto)}"
   # puts crypto["BT2 [CST]"]
 end
 
