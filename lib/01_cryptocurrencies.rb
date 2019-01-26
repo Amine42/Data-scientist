@@ -6,9 +6,7 @@ end
 
 def hash_with_integer(hash)
   new_hash = {}
-  hash.each_with_index do |(key, value), index|
-    new_hash[key] = value.delete("$").to_f
-  end
+  hash.map { |k, v| new_hash[k] = v.tr('$', '').to_f }
   new_hash
 end
 
@@ -43,10 +41,10 @@ def perform
     "$0.042993", "$0.000325", "$0.000271", "$0.002799", "$0.071591", "$1.17", "$0.001171", "$0.000651", "$0.000195", "$0.001562", "$0.008721", "$0.000065", "$0.000130", "$0.002473", "$0.000065", "$0.000325", "$0.656235", "$0.000254", "$0.000518", "$0.000065", "$0.054733", "$9.85", "$0.000520", "$0.000259", "$0.003288", "$0.006578", "$0.004273", "$0.024932", "$0.011394"]
      
   crypto = hash_with_integer(merge_tab_in_hash(key, value))
-  crypto_with_interger = hash_with_integer(crypto)
-  puts "la crypto qui a la plus grosse valeur est #{max_value(crypto_with_interger)}"
-  puts "les cryptos qui ont la plus petite valeur sont #{print_min_value(crypto_with_interger, min_value(crypto_with_interger))}"
-  puts "la crypto la plus chere parmis celles dont le cours est inferieur a 6000 est: #{max_value(less_than_six_thousand(crypto_with_interger))}"
+  puts "la crypto qui a la plus grosse valeur est #{max_value(crypto)}"
+  puts "les cryptos qui ont la plus petite valeur sont :"
+  print_min_value(crypto, min_value(crypto))
+  puts "la crypto la plus chere parmis celles dont le cours est inferieur a 6000 est: #{max_value(less_than_six_thousand(crypto))}"
 end
 
 perform
