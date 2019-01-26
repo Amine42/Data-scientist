@@ -20,8 +20,15 @@ end
 
 def print_min_value(hash_crypto, value)
   value = hash_crypto[value]
-  puts hash_crypto["EmberCoin"]
   hash_crypto.each { |k, v| puts k if v == value }
+end
+
+def less_than_six_thousand(hash_crypto)
+  new_hash = {}
+  hash_crypto.map do |key, value|
+    new_hash[key] = value if  value < 6000
+  end
+  new_hash
 end
 
 def perform
@@ -35,10 +42,10 @@ def perform
  
   crypto = merge_tab_in_hash(key, value)
   crypto_with_interger = hash_with_integer(crypto)
-  hash_with_integer(crypto)
   puts max_value(crypto_with_interger)
-  # puts Float(crypto_with_interger["EmberCoin"].to_s)
   print_min_value(crypto_with_interger, min_value(crypto_with_interger))
+  less_than_six_thousand(crypto_with_interger)
+  puts max_value(less_than_six_thousand(crypto_with_interger))
 end
 
 perform
